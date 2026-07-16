@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+
+  --color-ink-50: #f7f7f5;
+  --color-ink-100: #ecece8;
+  --color-ink-200: #d8d8d2;
+  --color-ink-300: #b8b8b0;
+  --color-ink-400: #8f8f86;
+  --color-ink-500: #6f6f66;
+  --color-ink-600: #55554e;
+  --color-ink-700: #43433e;
+  --color-ink-800: #2e2e2b;
+  --color-ink-900: #1a1a18;
+  --color-ink-950: #0f0f0e;
+
+  --color-signal-50: #fff4eb;
+  --color-signal-100: #ffe4cc;
+  --color-signal-200: #ffc999;
+  --color-signal-300: #ffa566;
+  --color-signal-400: #ff7a33;
+  --color-signal-500: #f55a0a;
+  --color-signal-600: #d64500;
+  --color-signal-700: #a83600;
+  --color-signal-800: #7a2a08;
+  --color-signal-900: #4d1b06;
+  --color-signal-950: #2a0e03;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased;
+  background-color: #fafaf8;
+  color: #1a1a18;
+}
+
+.dark body {
+  background-color: #0f0f0e;
+  color: #f7f7f5;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.22s; }
+.delay-3 { animation-delay: 0.34s; }
+
+.section-shell {
+  @apply mx-auto max-w-6xl px-5 sm:px-8 lg:px-10;
+}
+
+.photo-frame {
+  @apply relative overflow-hidden bg-ink-200 dark:bg-ink-800;
+}
+
+.photo-frame img {
+  @apply size-full object-cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-frame:hover img {
+  transform: scale(1.04);
+}
+
+.caption-chip {
+  @apply absolute bottom-4 left-4 rounded-md bg-black/70 px-3 py-1.5 text-xs font-medium tracking-wide text-white backdrop-blur-sm;
+}
