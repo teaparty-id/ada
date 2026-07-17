@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { useDiscord } from "~/composables/useDiscordGuild";
+
 const { discordInvite } = useCommunityLinks();
+const { fetchGuildData } = useDiscord();
+
+const guildData = ref<any>(await fetchGuildData());
 </script>
 
 <template>
@@ -25,6 +30,9 @@ const { discordInvite } = useCommunityLinks();
         class="animate-rise text-sm font-semibold uppercase tracking-[0.14em] text-white/70"
       >
         Komunitas independen · Bukan situs resmi
+        <span v-if="guildData?.profile">
+          · {{ guildData?.profile?.member_count }} member</span
+        >
       </p>
 
       <h1
@@ -37,7 +45,7 @@ const { discordInvite } = useCommunityLinks();
       <p
         class="animate-rise delay-2 mt-6 max-w-xl text-lg leading-relaxed text-white/80 sm:text-xl"
       >
-        Dukungan praktis untuk applicant Apple Developer Academy Indonesia— dari
+        Dukungan praktis untuk applicant Apple Developer Academy Indonesia, dari
         CV dan portofolio hingga online test serta simulasi FGD.
       </p>
 
